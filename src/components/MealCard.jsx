@@ -134,7 +134,7 @@ function MealCard({
   const saveMeal = async () => {
 
     if (myMeals === 'Save Meal') {
-      let response = await axios.post("http://localhost:5000/savemeal", {
+      let response = await axios.post("https://foodfinder-server-8shjd.ondigitalocean.app/savemeal", {
         id: myContext.userUid,
         mealImage,
         mealTitle,
@@ -159,7 +159,7 @@ function MealCard({
       console.log(response);
     } else {
       axios
-      .delete("http://localhost:5000/deletemeal", {data: {
+      .delete("https://foodfinder-server-8shjd.ondigitalocean.app/deletemeal", {data: {
         uid: myContext.userUid,
         mealTitle
       }

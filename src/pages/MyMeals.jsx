@@ -30,8 +30,8 @@ export default function MyMeals() {
   }, [myContext.userUid]);
 
   const getUserInfo = async (uid) => {
-    let response = await axios.post("http://localhost:5000/userinfo", { uid });
-    let response1 = await axios.post("http://localhost:5000/getmeals", { uid });
+    let response = await axios.post("https://foodfinder-server-8shjd.ondigitalocean.app/userinfo", { uid });
+    let response1 = await axios.post("https://foodfinder-server-8shjd.ondigitalocean.app/getmeals", { uid });
     let name = response.data[0];
 
     console.log(response1);

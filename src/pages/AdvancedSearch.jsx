@@ -56,7 +56,7 @@ export default function AdvancedSearch() {
   }, [myContext.userUid]);
 
   const getUserInfo = async (uid) => {
-    let response = await axios.post("http://localhost:5000/userinfo", { uid });
+    let response = await axios.post("https://foodfinder-server-8shjd.ondigitalocean.app/userinfo", { uid });
     let name = response.data[0];
     myContext.setUserName(name.first_name + " " + name.last_name);
     console.log(response);
@@ -134,9 +134,12 @@ export default function AdvancedSearch() {
     console.log(stringText);
 
     try {
-      let response = await axios.post("http://localhost:5000/meals", {
-        stringText,
-      });
+      let response = await axios.post(
+        "https://foodfinder-server-8shjd.ondigitalocean.app/meals",
+        {
+          stringText,
+        }
+      );
       myContext.setMeals(response.data.hits);
       history.push("/searchedmeals");
       console.log(response);

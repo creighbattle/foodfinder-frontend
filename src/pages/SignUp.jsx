@@ -94,7 +94,7 @@ export default function SignUp() {
 
   const addUserToDb = (uid) => {
     axios
-      .post("http://localhost:5000/createUser", {
+      .post("https://foodfinder-server-8shjd.ondigitalocean.app/createUser", {
         uid,
         fname,
         lname,
