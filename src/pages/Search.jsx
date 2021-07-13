@@ -33,6 +33,7 @@ function Search(props) {
 
   async function sendRequest() {
     try {
+      //let response = await axios.get("https://foodfindercb.herokuapp.com/meals");
       let response = await axios.get("https://foodfindercb.herokuapp.com/meals");
       console.log(response.data.hits);
       myContext.setMeals(response.data.hits);

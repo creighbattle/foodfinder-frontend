@@ -134,8 +134,15 @@ export default function AdvancedSearch() {
     console.log(stringText);
 
     try {
+      // let response = await axios.post(
+      //   "https://foodfindercb.herokuapp.com/meals",
+      //   {
+      //     stringText,
+      //   }
+      // );
+
       let response = await axios.post(
-        "https://foodfindercb.herokuapp.com/meals",
+        "https://api.edamam.com/search?from=0&to=30&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}",
         {
           stringText,
         }

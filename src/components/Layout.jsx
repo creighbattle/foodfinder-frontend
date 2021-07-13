@@ -9,6 +9,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import SubjectOutlined from "@material-ui/icons/SubjectOutlined";
 import SearchOutlined from "@material-ui/icons/SearchOutlined";
+import Menu from "@material-ui/icons/MenuOutlined";
 import LockOutlined from "@material-ui/icons/LockOutlined";
 import LockOpenOutlined from "@material-ui/icons/LockOpenOutlined";
 import { useHistory, useLocation } from "react-router";
@@ -94,6 +95,14 @@ export default function Layout({ children }) {
   }, [myContext.userName]);
 
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
+  const toggleMenu = () => {
+    if (state.right === true) {
+      setState({ right: false });
+    } else {
+      setState({ right: true });
+    }
+  };
 
   const menuItems = [
     {
@@ -215,10 +224,7 @@ export default function Layout({ children }) {
             {myContext.userName && (
               <>
                 <Typography>{fname}</Typography>
-                <Avatar className={classes.avatar}>
-                  {fLetter}
-                  {lLetter}
-                </Avatar>
+                <Menu style={{ marginLeft: "10px" }} onClick={toggleMenu} />
               </>
             )}
           </Toolbar>
