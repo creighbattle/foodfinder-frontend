@@ -96,14 +96,6 @@ export default function Layout({ children }) {
 
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
 
-  const toggleMenu = () => {
-    if (state.right === true) {
-      setState({ right: false });
-    } else {
-      setState({ right: true });
-    }
-  };
-
   const menuItems = [
     {
       text: "My Meals",
@@ -127,6 +119,14 @@ export default function Layout({ children }) {
     // },
   ];
 
+  const toggleMenu = () => {
+    if (state.right === true) {
+      setState({ right: false });
+    } else {
+      setState({ right: true });
+    }
+  };
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event &&
@@ -140,7 +140,7 @@ export default function Layout({ children }) {
   };
 
   const onBtnClick = async (itemPath) => {
-    if (itemPath.path === "/signin") {
+    if (itemPath === "/signin") {
       let result = firebase.auth().signOut();
       myContext.setUserName("");
       myContext.setMyMeals([]);
@@ -148,10 +148,10 @@ export default function Layout({ children }) {
       setIcon(<LockOpenOutlined color="secondary" />);
       setText("Sign In");
       console.log(result);
-      history.push(itemPath.path);
+      history.push(itemPath);
     } else {
-      console.log(itemPath.path);
-      history.push(itemPath.path);
+      console.log(itemPath);
+      history.push(itemPath);
     }
   };
 
