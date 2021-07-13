@@ -56,7 +56,10 @@ export default function AdvancedSearch() {
   }, [myContext.userUid]);
 
   const getUserInfo = async (uid) => {
-    let response = await axios.post("https://foodfindercb.herokuapp.com/userinfo", { uid });
+    let response = await axios.post(
+      "https://foodfindercb.herokuapp.com/userinfo",
+      { uid }
+    );
     let name = response.data[0];
     myContext.setUserName(name.first_name + " " + name.last_name);
     console.log(response);
@@ -134,19 +137,19 @@ export default function AdvancedSearch() {
     console.log(stringText);
 
     try {
-      // let response = await axios.post(
-      //   "https://foodfindercb.herokuapp.com/meals",
-      //   {
-      //     stringText,
-      //   }
-      // );
-
       let response = await axios.post(
-        "https://api.edamam.com/search?from=0&to=30&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}",
+        "https://foodfindercb.herokuapp.com/meals",
         {
           stringText,
         }
       );
+
+      // let response = await axios.post(
+      //   "https://api.edamam.com/search?from=0&to=30&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}",
+      //   {
+      //     stringText,
+      //   }
+      // );
       myContext.setMeals(response.data.hits);
       history.push("/searchedmeals");
       console.log(response);
