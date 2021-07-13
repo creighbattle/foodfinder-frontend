@@ -64,7 +64,6 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
 
-
   const signUp = async (e) => {
     e.preventDefault();
 
@@ -73,7 +72,7 @@ export default function SignUp() {
         .auth()
         .createUserWithEmailAndPassword(email, password)
         .then((response) => {
-          console.log(response);
+          //console.log(response);
           addUserToDb(response.user.uid);
           myContext.setUserUid(response.user.uid);
           myContext.setUserName(fname + " " + lname);
@@ -94,7 +93,7 @@ export default function SignUp() {
 
   const addUserToDb = (uid) => {
     axios
-      .post("https://foodfinder-server-8shjd.ondigitalocean.app/createUser", {
+      .post("https://foodfindercb.herokuapp.com/createUser", {
         uid,
         fname,
         lname,

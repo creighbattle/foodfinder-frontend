@@ -17,6 +17,7 @@ import { useHistory } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
 import AppContext from "../components/AppContext";
+import axios from "axios";
 
 function Copyright() {
   return (
@@ -61,7 +62,14 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
 
+  useEffect(() => {
+    testing();
+  }, []);
 
+  const testing = async () => {
+    let response = await axios.get("https://foodfindercb.herokuapp.com/test");
+    console.log(response);
+  };
 
   const signIn = async (e) => {
     e.preventDefault();
