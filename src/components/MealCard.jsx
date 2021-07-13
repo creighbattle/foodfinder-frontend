@@ -66,12 +66,11 @@ function MealCard({
   const [height, setHeight] = useState(300);
   const [myMeals, setMyMeals] = useState("Delete Meal");
 
-
   useEffect(() => {
-    if (location.pathname === '/searchedmeals') {
-      setMyMeals("Save Meal")
+    if (location.pathname === "/searchedmeals") {
+      setMyMeals("Save Meal");
     }
-  }, [location.pathname])
+  }, [location.pathname]);
 
   const changeElevationUp = () => {
     setElevationSize(10);
@@ -132,17 +131,19 @@ function MealCard({
   };
 
   const saveMeal = async () => {
-
-    if (myMeals === 'Save Meal') {
-      let response = await axios.post("https://foodfinder-server-8shjd.ondigitalocean.app/savemeal", {
-        id: myContext.userUid,
-        mealImage,
-        mealTitle,
-        mealCalories,
-        mealIngredients,
-        mealNutrients,
-        mealUrl,
-      });
+    if (myMeals === "Save Meal") {
+      let response = await axios.post(
+        "https://foodfindercb.herokuapp.com/savemeal",
+        {
+          id: myContext.userUid,
+          mealImage,
+          mealTitle,
+          mealCalories,
+          mealIngredients,
+          mealNutrients,
+          mealUrl,
+        }
+      );
 
       let object = {
         id: myContext.userUid,
@@ -152,31 +153,30 @@ function MealCard({
         mealIngredients: mealIngredients,
         mealNutrients: mealNutrients,
         mealurl: mealUrl,
-      }
+      };
 
-      myContext.setMyMeals(oldArr => [...oldArr, object])
-  
+      myContext.setMyMeals((oldArr) => [...oldArr, object]);
+
       console.log(response);
     } else {
       axios
-      .delete("https://foodfinder-server-8shjd.ondigitalocean.app/deletemeal", {data: {
-        uid: myContext.userUid,
-        mealTitle
-      }
-      })
-      .then((res) => {
-        console.log(res.data);
-        const newMeals = myContext.myMeals.filter((meal) => meal.mealtitle != mealTitle);
-        myContext.setMyMeals(newMeals);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-
-
+        .delete("https://foodfindercb.herokuapp.com/deletemeal", {
+          data: {
+            uid: myContext.userUid,
+            mealTitle,
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          const newMeals = myContext.myMeals.filter(
+            (meal) => meal.mealtitle != mealTitle
+          );
+          myContext.setMyMeals(newMeals);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     }
-
-
   };
 
   return (

@@ -62,15 +62,6 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState(false);
 
-  useEffect(() => {
-    testing();
-  }, []);
-
-  const testing = async () => {
-    let response = await axios.get("https://foodfindercb.herokuapp.com/test");
-    console.log(response);
-  };
-
   const signIn = async (e) => {
     e.preventDefault();
 

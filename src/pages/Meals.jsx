@@ -35,7 +35,7 @@ export default function Meals() {
   });
 
   const getUserInfo = async (uid) => {
-    let response = await axios.post("https://foodfinder-server-8shjd.ondigitalocean.app/userinfo", { uid });
+    let response = await axios.post("https://foodfindercb.herokuapp.com/userinfo", { uid });
     let name = response.data[0];
     myContext.setUserName(name.first_name + " " + name.last_name);
     console.log(response);
