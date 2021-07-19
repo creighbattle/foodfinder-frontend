@@ -56,7 +56,6 @@ export default function MyMeals() {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
-        <div>hi</div>
         {myContext.myMeals.map((meal, index) => (
           <MealCard
             key={index}
