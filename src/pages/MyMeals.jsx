@@ -30,8 +30,14 @@ export default function MyMeals() {
   }, [myContext.userUid]);
 
   const getUserInfo = async (uid) => {
-    let response = await axios.post("https://foodfindercb.herokuapp.com/userinfo", { uid });
-    let response1 = await axios.post("https://foodfindercb.herokuapp.com/getmeals", { uid });
+    let response = await axios.post(
+      "https://foodfindercb.herokuapp.com/userinfo",
+      { uid }
+    );
+    let response1 = await axios.post(
+      "https://foodfindercb.herokuapp.com/getmeals",
+      { uid }
+    );
     let name = response.data[0];
 
     console.log(response1);
@@ -50,6 +56,7 @@ export default function MyMeals() {
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
       >
+        <div>hi</div>
         {myContext.myMeals.map((meal, index) => (
           <MealCard
             key={index}

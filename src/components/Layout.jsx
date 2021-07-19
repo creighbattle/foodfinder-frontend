@@ -250,7 +250,7 @@ export default function Layout({ children }) {
               <ListItem
                 key={item.text}
                 button
-                onClick={() => onBtnClick(item)}
+                onClick={() => onBtnClick(item.path)}
                 className={
                   location.pathname == item.path ? classes.active : null
                 }
